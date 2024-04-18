@@ -6,7 +6,7 @@ import json
 import struct
 
 HOST = '0.0.0.0'  # endereço IP
-PORT = 20001        # Porta utilizada pelo servidor
+PORT = 20000        # Porta utilizada pelo servidor
 BUFFER_SIZE = 1024  # tamanho do buffer para recepção dos dados
 
 

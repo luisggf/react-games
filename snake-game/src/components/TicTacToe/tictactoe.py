@@ -317,11 +317,20 @@ def HUMANO_vez(comp_escolha, humano_escolha):
 Funcao Principal que chama todas funcoes
 """
 
+message_structure = {
+    "FIRST_TO_PLAY": '',
+    "PLAYER_MOVE": '',
+    "BOT_MOVE": '',
+    "PLAYER_FLAG": '',
+    "BOT_FLAG": ''
+}
+
 
 def main(argv):
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect((HOST, PORT))
+            print("Client has connected sucessfully!")
             limpa_console()
             humano_escolha = ''  # Pode ser X ou O
             comp_escolha = ''  # Pode ser X ou O
@@ -338,11 +347,15 @@ def main(argv):
                 except:
                     print('Escolha Errada')
 
+            message_structure['PLAYER_FLAG'] = humano_escolha
+
             # Setting Computador's choice
             if humano_escolha == 'X':
                 comp_escolha = 'O'
             else:
                 comp_escolha = 'X'
+
+            message_structure['BOT_FLAG'] = comp_escolha
 
             # HUMANO pode começar primeiro
             limpa_console()
@@ -355,6 +368,7 @@ def main(argv):
                 except:
                     print('Escolha Errada!')
 
+            message_structure['FIRST_TO_PLAY'] = primeiro
             # Laço principal do jogo
             while len(celulas_vazias(tabuleiro)) > 0 and not fim_jogo(tabuleiro):
                 if primeiro == 'N':

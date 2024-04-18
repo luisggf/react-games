@@ -17,7 +17,7 @@ const TicTacToe = () => {
   let box7 = useRef<HTMLHeadingElement>(null);
   let box8 = useRef<HTMLHeadingElement>(null);
   let box9 = useRef<HTMLHeadingElement>(null);
-
+  const [firstPlayer, setFirstPlayer] = useState(String);
   let box_list = [box1, box2, box3, box4, box5, box6, box7, box8, box9];
 
   const toggle = (e: React.MouseEvent, num: number) => {
@@ -83,11 +83,28 @@ const TicTacToe = () => {
       e.current!.innerHTML = "";
     });
   };
+
   return (
     <div className="container">
       <h1 className="tictactoe-game-title" ref={winner_title}>
         Tic Tac Toe Game in <span>React</span>
       </h1>
+      <div className="input-parameters">
+        <span>Modality:</span>
+        <div className="button-group">
+          <button onClick={() => setFirstPlayer("BOT")}>2 Player</button>
+          <button onClick={() => setFirstPlayer("HUMAN")}>BOT Player</button>
+        </div>
+        {firstPlayer && <span>Who will be the first player?</span>}
+        {firstPlayer && (
+          <div className="button-group">
+            <button onClick={() => setFirstPlayer("BOT")}>BOT Player</button>
+            <button onClick={() => setFirstPlayer("HUMAN")}>
+              Human Player
+            </button>
+          </div>
+        )}
+      </div>
       <div className="board">
         <div className="row1">
           <div className="boxes" ref={box1} onClick={(e) => toggle(e, 0)}></div>
@@ -117,6 +134,10 @@ const TicTacToe = () => {
       </div>
     </div>
   );
+};
+
+const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const selectedOption = event.target.value;
 };
 
 export default TicTacToe;

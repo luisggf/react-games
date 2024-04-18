@@ -2,6 +2,43 @@
   text-align: center;
 }
 
+.input-parameters {
+  display: inline-block;
+  margin: auto;
+  width: 600px;
+  height: 180px;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+.input-parameters span {
+  color: white;
+  font-size: 24px;
+  margin-left: 20px;
+}
+
+.input-parameters button {
+  border: none;
+  height: 50px;
+  margin-top: 7.5px;
+  margin-bottom: 20px;
+  margin-left: 12px;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  border-radius: 20px;
+  background: #1f3540;
+  font-size: 20px;
+  color: #26ffcb;
+}
+
+.input-parameters button:hover {
+  border: 1px solid black;
+  background: #1f3540;
+  border-color: #26ffcb;
+  color: white;
+}
+
 .tictactoe-game-title {
   margin-top: 50px;
   color: white;
